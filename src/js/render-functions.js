@@ -1,6 +1,8 @@
 export function renderImages(images) {
-    const gallery = document.querySelector('.gallery');
-    gallery.innerHTML = images.map(image => `
+  const gallery = document.querySelector('.gallery');
+  gallery.innerHTML = images
+    .map(
+      image => `
       <a href="${image.largeImageURL}" class="image-card">
         <img src="${image.webformatURL}" alt="${image.tags}" />
         <div class="info">
@@ -18,20 +20,22 @@ export function renderImages(images) {
           </p>
         </div>
       </a>
-    `).join('');
+    `
+    )
+    .join('');
+}
+
+export function showLoader() {
+  const loader = document.createElement('div');
+  loader.classList.add('loader');
+  loader.innerHTML =
+    '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>';
+  document.body.appendChild(loader);
+}
+
+export function hideLoader() {
+  const loader = document.querySelector('.loader');
+  if (loader) {
+    loader.remove();
   }
-  
-  export function showLoader() {
-    const loader = document.createElement('div');
-    loader.classList.add('loader');
-    loader.innerHTML = '<div class="lds-ring"><div></div><div></div><div></div><div></div></div>';
-    document.body.appendChild(loader);
-  }
-  
-  export function hideLoader() {
-    const loader = document.querySelector('.loader');
-    if (loader) {
-      loader.remove();
-    }
-  }
-  
+}
