@@ -1,7 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchImages } from './js/pixabay-api.js';
 import { renderImages, showLoader, hideLoader } from './js/render-functions.js';
 
@@ -23,7 +23,7 @@ document.querySelector(".form").addEventListener('submit', function (event) {
   fetchImages(searchQuery)
     .then(images => {
       const gallery = document.querySelector('.gallery');
-      gallery.innerHTML = ''; // Очищення галереї перед новим пошуком
+      gallery.innerHTML = '';
       if (images.length === 0) {
         iziToast.warning({
           title: 'No Results',
@@ -50,5 +50,5 @@ document.querySelector(".form").addEventListener('submit', function (event) {
       hideLoader();
     });
 
-  searchInput.value = ''; // Clear the input field after submission
+  searchInput.value = ''; 
 });
